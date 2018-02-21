@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'dbw-margin-icon',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./margin-icon.component.css']
 })
 export class MarginIconComponent implements OnInit {
+
+  @Input()
+  icon: string;
 
   constructor() { }
 

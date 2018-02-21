@@ -1,9 +1,17 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav class="side-nav" mode="side" [opened]="showNav">
     <mat-nav-list>
-      <a mat-list-item>
-        <dbw-margin-icon></dbw-margin-icon>
-        Hello World
+      <a mat-list-item routerLink="/login">
+        <dbw-margin-icon [icon]="'sync'"></dbw-margin-icon>
+        Login
+      </a>
+      <a mat-list-item routerLink="/files">
+        <dbw-margin-icon [icon]="'folder'"></dbw-margin-icon>
+        Files
+      </a>
+      <a mat-list-item routerLink="/profile">
+        <dbw-margin-icon [icon]="'person'"></dbw-margin-icon>
+        Profile
       </a>
     </mat-nav-list>
   </mat-sidenav>
