@@ -8,4 +8,9 @@
 
 .side-nav{
   width: 250px;
+  background: #f9f9f9;
+}
+
+.content-nav{
+  background: white;
 }
