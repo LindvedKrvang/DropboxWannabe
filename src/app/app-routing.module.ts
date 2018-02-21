@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'files', component: FileSystemComponent},
   { path: 'profile', component: ProfileComponent},
+  {path: '', component: LoginComponent},
 
 
   { path: '**', component: PageNotFoundComponent}

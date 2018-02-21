@@ -1,0 +1,25 @@
+.card-frame{
+  margin-right: 20%;
+  margin-left: 20%;
+  margin-top: 10%;
+}
+
+.login-icon {
+  background-size: cover;
+  margin: auto;
+}
+
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.input-full-width {
+  width: 100%;
+}

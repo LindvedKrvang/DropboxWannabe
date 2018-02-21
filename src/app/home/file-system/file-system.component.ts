@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-file-system',
+  selector: 'dbw-file-system',
   templateUrl: './file-system.component.html',
   styleUrls: ['./file-system.component.css']
 })
