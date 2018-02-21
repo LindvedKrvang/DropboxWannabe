@@ -12,6 +12,7 @@ import {RouterModule} from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
+import {MatListModule, MatSidenavModule} from '@angular/material';
 
 
 @NgModule({
@@ -23,6 +24,8 @@ import {SharedModule} from './shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
     AppRoutingModule,
     SharedModule,
     AuthModule,
