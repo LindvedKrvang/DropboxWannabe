@@ -4,6 +4,9 @@ import { LoginComponent } from './login/login.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule, MatInputModule, MatListModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {LoginService} from './shared/loginService';
+import {AngularFireAuthModule} from 'angularfire2/auth';
 
 @NgModule({
   imports: [
@@ -12,8 +15,11 @@ import {MatButtonModule, MatInputModule, MatListModule} from '@angular/material'
     MatGridListModule,
     MatListModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    FlexLayoutModule,
+    AngularFireAuthModule
   ],
   declarations: [LoginComponent],
+  providers: [LoginService]
 })
 export class AuthModule { }

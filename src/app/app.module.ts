@@ -14,6 +14,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
 import {MatListModule, MatSidenavModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     AuthModule,
     HomeModule,
     UserModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   exports: [RouterModule],

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnDestroy} from '@angular/core';
 import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 import {Subscription} from 'rxjs/Subscription';
 
@@ -7,10 +7,9 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   showNav = true;
   mode = 'side';
-
   watcher: Subscription;
 
   constructor(media: ObservableMedia) {
@@ -21,6 +20,10 @@ export class AppComponent {
         this.loadDashboardContent();
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.watcher.unsubscribe();
   }
 
   loadMobileContent() {
@@ -35,6 +38,5 @@ export class AppComponent {
 
   toggleNav() {
     this.showNav = !this.showNav;
-    console.log('Show is now: ' + this.showNav);
   }
 }
