@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
 import {MatListModule, MatSidenavModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {MatListModule, MatSidenavModule} from '@angular/material';
     AuthModule,
     HomeModule,
     UserModule,
+    FlexLayoutModule
   ],
   providers: [],
   exports: [RouterModule],
