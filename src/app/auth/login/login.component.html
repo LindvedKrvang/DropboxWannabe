@@ -10,13 +10,9 @@
       <mat-form-field class="input-full-width">
         <input #password type="password" matInput placeholder="Password" formControlName="password">
       </mat-form-field>
-      <mat-form-field class="input-full-width">
-        <input #repeatPassword type="password" matInput placeholder="Repeat Password" formControlName="repeatPassword">
-      </mat-form-field>
     </mat-card-content>
     <mat-card-actions align="middle">
       <button type="submit" mat-raised-button color="primary">Login</button>
-      <button *ngIf="showMore" mat-raised-button color="accent">Cancel</button>
     </mat-card-actions>
   </form>
 </mat-card>

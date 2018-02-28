@@ -3,6 +3,7 @@ import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from '../shared/auth.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'dbw-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   showMore = true;
   loginForm: FormGroup;
 
-  constructor(private media: ObservableMedia, private authService: AuthService, private fb: FormBuilder) {
+  constructor(private media: ObservableMedia, private authService: AuthService, private fb: FormBuilder,
+              private router: Router) {
     this.watcher = media.subscribe((change: MediaChange) => {
       if (change.mqAlias === 'xs') {
         this.loadMobileContent();
@@ -25,8 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.loginForm = this.fb.group({
       email: '',
-      password: '',
-      repeatPassword: ''
+      password: ''
     });
   }
 
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log('Button Clicked!');
     this.authService.login(email, password)
       .then(user => {
-        console.log('Is logged in');
+        this.router.navigateByUrl('files');
       })
       .catch(error => {
         console.log(error);

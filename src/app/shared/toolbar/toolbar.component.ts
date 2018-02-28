@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthService} from '../../auth/shared/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'dbw-toolbar',
@@ -13,7 +14,7 @@ export class ToolbarComponent implements OnInit {
   @Output()
   navToggle = new EventEmitter();
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authService.isAuthenticated().subscribe(isLogged => {
@@ -28,7 +29,7 @@ export class ToolbarComponent implements OnInit {
   logout() {
     this.authService.logout()
       .then(() => {
-        console.log('Signed out');
+        this.router.navigateByUrl('login');
       })
       .catch(error => {
         console.log(error);

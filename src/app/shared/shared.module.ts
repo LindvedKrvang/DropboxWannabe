@@ -4,6 +4,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MatButtonModule, MatIconModule, MatToolbarModule} from '@angular/material';
 import { MarginIconComponent } from './margin-icon/margin-icon.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {LoginGuard} from './guards/login.guard';
+import {AlreadyLoggedGuard} from './guards/already-logged.guard';
 
 @NgModule({
   imports: [
@@ -14,6 +16,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FlexLayoutModule
   ],
   declarations: [ToolbarComponent, MarginIconComponent],
-  exports: [ToolbarComponent, MarginIconComponent]
+  exports: [ToolbarComponent, MarginIconComponent],
+  providers: [LoginGuard, AlreadyLoggedGuard]
 })
 export class SharedModule { }
