@@ -1,7 +1,9 @@
-<mat-toolbar fxLayout color="primary">
-  <mat-toolbar-row>
-    <button class="small-margin" mat-mini-fab (click)="toggleNav()"><mat-icon>list</mat-icon></button>
-    <span>Dropbox Wannabe</span>
-    <button mat-button>Login</button>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div fxLayout>
+  <mat-toolbar fxLayout color="primary">
+    <mat-toolbar-row>
+      <button class="small-margin" mat-mini-fab (click)="toggleNav()"><mat-icon>list</mat-icon></button>
+      <span fxFlex>Dropbox Wannabe</span>
+      <button mat-button>Log Out</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 import {Subscription} from 'rxjs/Subscription';
-import {LoginService} from '../shared/loginService';
+import {AuthService} from '../shared/auth.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'dbw-login',
@@ -11,14 +12,21 @@ import {LoginService} from '../shared/loginService';
 export class LoginComponent implements OnInit, OnDestroy {
   watcher: Subscription;
   showMore = true;
+  loginForm: FormGroup;
 
-  constructor(private media: ObservableMedia, private loginService: LoginService) {
+  constructor(private media: ObservableMedia, private authService: AuthService, private fb: FormBuilder) {
     this.watcher = media.subscribe((change: MediaChange) => {
       if (change.mqAlias === 'xs') {
         this.loadMobileContent();
       } else {
         this.loadDashboardContent();
       }
+    });
+
+    this.loginForm = this.fb.group({
+      email: '',
+      password: '',
+      repeatPassword: ''
     });
   }
 
@@ -38,8 +46,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   loginButtonClicked(email: string, password: string) {
-    console.log('Logging in...');
-    this.loginService.login(email, password);
+    console.log('Button Clicked!');
+    this.authService.login(email, password)
+      .then(user => {
+        console.log('Is logged in');
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
 }
