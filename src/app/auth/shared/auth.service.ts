@@ -19,6 +19,10 @@ export class AuthService {
     return this.fireAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
   }
 
+  logout(): Promise<any> {
+    return this.fireAuth.auth.signOut();
+  }
+
   isAuthenticated(): Observable<boolean> {
     return this.fireAuth.authState
       .map(authState => {
