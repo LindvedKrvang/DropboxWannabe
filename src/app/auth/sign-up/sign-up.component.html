@@ -15,20 +15,20 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput placeholder="Password" formControlName="password">
+        <input matInput type="password" placeholder="Password" formControlName="password">
         <mat-error *ngIf="password.invalid">
           {{getPasswordError()}}
         </mat-error>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput placeholder="Repeat Password" formControlName="repeatPassword">
+        <input matInput type="password" placeholder="Repeat Password" formControlName="repeatPassword">
         <mat-error *ngIf="repeatPassword.invalid">
           {{getRepeatPasswordError()}}
         </mat-error>
       </mat-form-field>
     </form>
     <div fxLayoutAlign="center">
-    <button mat-raised-button type="submit" color="primary">
+    <button mat-raised-button type="submit" color="primary" [disabled]="signUpForm.invalid">
       Sign Up
     </button>
     <button mat-raised-button fxFlexOffset="20px" color="accent" (click)="goToLogin()">
