@@ -57,4 +57,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
   }
 
+  goToSignUp() {
+    this.router.navigateByUrl('signUp');
+  }
+
 }

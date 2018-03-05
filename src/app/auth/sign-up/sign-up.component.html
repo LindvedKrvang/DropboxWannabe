@@ -1,0 +1,30 @@
+
+<mat-card fxLayout="column" class="card-frame">
+  <mat-card-header>
+    <mat-card-title>
+      Sign Up
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="signUpForm" novalidate fxLayout="column">
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Username">
+      </mat-form-field>
+      <mat-form-field fxFlex="100%">
+        <input matInput placeholder="Password">
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <input matInput placeholder="Repeat Password">
+      </mat-form-field>
+    </form>
+    <div fxLayoutAlign="center">
+    <button mat-raised-button color="primary">
+      Sign Up
+    </button>
+    <button mat-raised-button fxFlexOffset="20px" color="accent" (click)="goToLogin()">
+      Back to Login
+    </button>
+    </div>
+  </mat-card-content>
+</mat-card>
