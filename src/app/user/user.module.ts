@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
+import {UserService} from './shared/user.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatButtonModule,
     ReactiveFormsModule
   ],
-  declarations: [ProfileComponent]
+  declarations: [ProfileComponent],
+  providers: [UserService]
 })
 export class UserModule { }
