@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {User} from './user';
+import {User} from '../../user/shared/user';
 
 @Injectable()
 export class AuthService {
