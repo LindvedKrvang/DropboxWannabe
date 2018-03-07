@@ -7,7 +7,7 @@
   </mat-card-header>
 
   <mat-card-content>
-    <form [formGroup]="signUpForm" (submit)="signUp()" novalidate fxLayout="column">
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()" novalidate fxLayout="column">
       <mat-form-field fxFlex>
         <input matInput placeholder="Email" formControlName="email">
         <mat-error *ngIf="email.invalid">
@@ -26,14 +26,16 @@
           {{getRepeatPasswordError()}}
         </mat-error>
       </mat-form-field>
+
+      <div fxLayoutAlign="center">
+        <button mat-raised-button type="submit" color="primary" [disabled]="signUpForm.invalid">
+          Sign Up
+        </button>
+        <button mat-raised-button type="button" fxFlexOffset="20px" color="accent" (click)="goToLogin()">
+          Back to Login
+        </button>
+
+      </div>
     </form>
-    <div fxLayoutAlign="center">
-    <button mat-raised-button type="submit" color="primary" [disabled]="signUpForm.invalid">
-      Sign Up
-    </button>
-    <button mat-raised-button fxFlexOffset="20px" color="accent" (click)="goToLogin()">
-      Back to Login
-    </button>
-    </div>
   </mat-card-content>
 </mat-card>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {matchPassword} from '../shared/custom-validators';
+import {SignUpService} from '../shared/sign-up.service';
+import {MatSnackBar} from '@angular/material';
+import {User} from '../shared/user';
 
 @Component({
   selector: 'dbw-sign-up',
@@ -15,7 +18,9 @@ export class SignUpComponent implements OnInit {
 
   minCharacters = 'Must be at least 6 characters';
 
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor(private router: Router, private fb: FormBuilder,
+              private signUpService: SignUpService,
+              private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
@@ -26,7 +31,18 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
-
+    console.log('SignUp clicked');
+    const model = this.signUpForm.value as User;
+    this.signUpService.signUp(model)
+      .then(user => {
+        console.log('Created new user');
+        this.router.navigateByUrl('files');
+        this.snack.open('You\'re signed up', '', {duration: 2000});
+      })
+      .catch(err => {
+        console.log('No user created');
+        console.log(err);
+      });
   }
 
   get email() {

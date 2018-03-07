@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
+import {User} from './user';
 
 @Injectable()
 export class AuthService {
 
+  testUser = {email: 'test@email.com', password: 'testpassword'};
+
   constructor(private fireAuth: AngularFireAuth) { }
 
-  createUser() {
-    this.fireAuth.auth.createUserAndRetrieveDataWithEmailAndPassword('test@email.com' , 'testpassword')
-      .then(user => {
-        console.log('User', user);
-      });
+  createUser(user: User): Promise<User> {
+    return this.fireAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(user.email , user.password);
   }
 
-  login(email: string, password: string): Promise<any> {
+  login(email: string, password: string): Promise<User> {
     return this.fireAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email, password);
   }
 
