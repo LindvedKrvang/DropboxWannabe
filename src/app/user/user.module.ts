@@ -5,6 +5,7 @@ import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatS
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UserService} from './shared/user.service';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {UserService} from './shared/user.service';
     MatFormFieldModule,
     MatButtonModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [ProfileComponent],
   providers: [UserService]

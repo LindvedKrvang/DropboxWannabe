@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   profileForm: FormGroup;
   user: User;
   userSub: Subscription;
+  image = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
@@ -63,5 +64,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   showSnackbar(msg: string) {
     this.snack.open(msg, null, {duration: 4000});
+  }
+
+  changeHoverPic(hovering: boolean) {
+    console.log('Profile hovering', hovering);
+    if (hovering) {
+      this.image = '../../../../assets/upload_picture.svg';
+    } else {
+      this.image = 'https://material.angular.io/assets/img/examples/shiba2.jpg';
+    }
+  }
+
+  onPicDropped(fileList) {
+    if (fileList && fileList.length === 1 && ['image/jpeg', 'image/png'].indexOf(fileList.item(0).type) > -1) {
+      console.log('Single file:', fileList.item(0));
+    } else {
+      this.showSnackbar('Must be a single JPEG or PNG');
+    }
   }
 }
