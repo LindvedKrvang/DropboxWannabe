@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'signUp', component: SignUpComponent, canActivate: [AlreadyLoggedGuard] },
   { path: 'files', component: FileSystemComponent, canActivate: [LoginGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent, canActivate: [AlreadyLoggedGuard] },
 
 
   { path: '**', component: PageNotFoundComponent}
