@@ -11,11 +11,14 @@
         <input #password type="password" matInput placeholder="Password" formControlName="password">
       </mat-form-field>
     </mat-card-content>
-    <mat-card-actions align="middle">
-      <button type="submit" mat-raised-button color="primary">Login</button>
-      <button mat-raised-button color="accent" (click)="goToSignUp()">
-        Sign Up
-      </button>
+    <mat-card-actions class="left-right-padding" fxLayout="column" align="middle">
+
+        <button  type="submit" mat-raised-button color="primary">Login</button>
+        <!--<button mat-raised-button color="accent" (click)="goToSignUp()">-->
+        <!--Sign Up-->
+        <!--</button>-->
+        <a class="padding" href="signUp">No account? Sign Up</a>
+
     </mat-card-actions>
   </form>
 </mat-card>

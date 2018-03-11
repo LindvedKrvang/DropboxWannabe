@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {AuthService} from '../shared/auth.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'dbw-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
 
   constructor(private media: ObservableMedia, private authService: AuthService, private fb: FormBuilder,
-              private router: Router) {
+              private router: Router, private snack: MatSnackBar) {
     this.watcher = media.subscribe((change: MediaChange) => {
       if (change.mqAlias === 'xs') {
         this.loadMobileContent();
@@ -47,13 +48,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   loginButtonClicked(email: string, password: string) {
-    console.log('Button Clicked!');
     this.authService.login(email, password)
       .then(user => {
         this.router.navigateByUrl('files');
+        this.showSnackBar('You\'re now logged in');
       })
       .catch(error => {
         console.log(error);
+        this.showSnackBar(error.message);
       });
   }
 
@@ -61,4 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('signUp');
   }
 
+  showSnackBar(msg: string) {
+    this.snack.open(msg, null, {duration: 4000});
+  }
 }

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../shared/user';
 import {UserService} from '../shared/user.service';
 import {Subscription} from 'rxjs/Subscription';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'dbw-profile',
@@ -11,13 +12,13 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
 
-
   profileForm: FormGroup;
   user: User;
   userSub: Subscription;
 
   constructor(private fb: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private snack: MatSnackBar) {
     this.profileForm = fb.group({
       username: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
@@ -44,10 +45,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
     model.uid = this.user.uid;
     this.userService.update(model)
       .then(() => {
-        console.log('User updated');
+        this.showSnackbar('Successfully updated profile :)');
       })
       .catch(err => {
+        this.showSnackbar('Couldn\'t update profile');
         console.log(err.message);
       });
+  }
+
+  unchanged(): boolean {
+    const model = this.profileForm.value as User;
+    return model.username === this.user.username &&
+            model.firstName === this.user.firstName &&
+            model.middleName === this.user.middleName &&
+            model.lastName === this.user.lastName;
+  }
+
+  showSnackbar(msg: string) {
+    this.snack.open(msg, null, {duration: 4000});
   }
 }

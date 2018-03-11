@@ -31,18 +31,20 @@ export class SignUpComponent implements OnInit {
   }
 
   signUp() {
-    console.log('SignUp clicked');
     const model = this.signUpForm.value as User;
     this.authService.createUser(model)
       .then(user => {
-        console.log('Created new user');
         this.router.navigateByUrl('files');
-        this.snack.open('You\'re signed up', '', {duration: 5000});
+        this.showSnackbar('You\'re signed up');
       })
       .catch(err => {
-        console.log('No user created');
         console.log(err);
+        this.showSnackbar(err.message);
       });
+  }
+
+  showSnackbar(msg: string) {
+    this.snack.open(msg, '', {duration: 4000});
   }
 
   get email() {

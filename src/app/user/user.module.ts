@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSnackBarModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UserService} from './shared/user.service';
@@ -14,6 +14,7 @@ import {UserService} from './shared/user.service';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatSnackBarModule,
     ReactiveFormsModule
   ],
   declarations: [ProfileComponent],

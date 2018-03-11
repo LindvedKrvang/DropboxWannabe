@@ -27,3 +27,12 @@
 mat-card.min-width{
   min-width: min-content;
 }
+
+a.padding{
+  padding: 10px;
+}
+
+mat-card-actions.left-right-padding{
+  padding-left: 15px;
+  padding-right: 15px;
+}
